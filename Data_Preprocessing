@@ -14,7 +14,7 @@ Data visualisation                     : Visualize the data and try to find patt
 
 
 *************************************************************************************************************************
-                            Exploratory Data Analysis (EDA)
+                            			Exploratory Data Analysis (EDA)
 *************************************************************************************************************************
 Variable Identification
 Univariate Analysis
@@ -23,6 +23,7 @@ Missing values treatment
 Outlier treatment
 Variable transformation
 Variable creation
+Feature Removal or Dimension Reduction
 
 
 1. Variable Identification
@@ -98,8 +99,13 @@ Variable creation
 
 6. Variable transformation
 	Change the scale
-	Symmetric distribution
-	Apply standard transformation
+		Min-Max scaling : x/(max-min) or (x-min)/(max-min)
+		Mean Normalization : (x-mean)/(max-min)
+		Standardization(Z-Score Normalization): Zero mean and unit variance   (x-mean)/std
+		Label encoding
+		One-hot encoding
+	Symmetric distribution over skewed distribution
+	Apply standard transformation (log, square_root, cube_root ...)
 	Binning
 
 7. Variable creation
