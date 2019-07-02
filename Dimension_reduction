@@ -1,0 +1,60 @@
+*************************************************************************************************************************
+                                  Dimensionality Reduction Technique
+*************************************************************************************************************************
+Visualizing and drawing inferences from high dimensions data is more challenging.
+
+Advantages:
+    Handle high dimensions (features) data    
+    We can quickly extract patterns and insights from it
+    Reduce the number of features in dataset without having to lose much information and keep (or improve) the model’s performance.
+    Reduce computation time and training time
+    Remove redundant feature 
+
+
+Methods for Dimension Reduction:
+	1. Feature Selection : By only keeping the most relevant variables from the original dataset.
+    2. Feature Reduction : By finding a smaller set of new variables, each being a combination of the input variables, 
+                           containing basically the same information as the input variables.
+
+
+1. Feature Selection Technique :
+	Missing Value Ratio
+	Low Variance Filter
+	High Correlation Filter
+	Random Forest
+	Backward Feature Extraction
+	Forward Feature Selection
+
+2. Feature Reduction Technique :
+	Factor Analysis
+	Principle Component Analysis (PCA)
+	Independent Component Analysis
+	Singular Value Decomposition (SVD)
+
+
+
+
+
+
+
+Use Case:
+
+	Missing Value Ratio           : If the dataset has too many missing values, We can drop the variables having a large 
+	                                number of missing values in them.
+    Low Variance filter           : To identify and drop constant variables from the dataset. The target variable is not 
+                                    unduly affected by variables with low variance, and hence these variables can be safely dropped.
+    High Correlation filter       : A pair of variables having high correlation increases multicollinearity in the 
+                                    dataset. So, we can use this technique to find highly correlated features and drop them accordingly.
+    Random Forest                 : We can find the importance of each feature present in the dataset and keep the top 
+                                    most features
+    Backward Feature Elimination  : 
+    Forward Feature Selection     : Both take a lot of computational time and are thus generally used on smaller 
+                                    datasets.
+    Factor Analysis               : This technique is best suited for situations where we have highly correlated set of 
+                                    variables. It divides the variables based on their correlation into different groups, and represents each group with a factor
+    Principal Component Analysis  : Widely used techniques for dealing with linear data. It divides the data into a set 
+                                    of components which try to explain as much variance as possible.
+    Independent Component Analysis: We can use ICA to transform the data into independent components which describe the 
+                                    data using less number of components
+
+
