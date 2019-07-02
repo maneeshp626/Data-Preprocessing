@@ -1,0 +1,125 @@
+*************************************************************************************************************************
+							Knowledge Discovery Process
+*************************************************************************************************************************
+
+Problem Definition                     : Define the problem and desired result
+Data collection                        : Collect the relevant data from various sources
+Data Preprocessing                     : Remove redundant data & Clean for further preprocessing
+Feature removal or dimension reduction : Remove redundant features
+Data transformation                    : Transform the data or change the scale of data
+Data mining                            : Data insight and new variable creation
+Data analysis                          : Statistical analysis of data
+Data visualisation                     : Visualize the data and try to find pattern in dataset
+
+
+
+*************************************************************************************************************************
+                            Exploratory Data Analysis (EDA)
+*************************************************************************************************************************
+Variable Identification
+Univariate Analysis
+Bi-variate Analysis
+Missing values treatment
+Outlier treatment
+Variable transformation
+Variable creation
+
+
+1. Variable Identification
+	Predictor
+	Target
+	Data types
+	Nominal 
+	Ordinal
+	Qualitative
+	Quantitative
+	Continuous
+	Descrete
+
+2. Univariate Analysis	
+	Continuous Variables	
+		Central tendency
+		Spread/Range 
+		Missing Value detection
+		Outliers Detection
+		Distribution
+		Graphical visualisation
+		Descriptive statistics
+	Categorical variables	
+		Frequency
+		Distribution of each category
+		Graphical visualisation
+		Descriptive statistics
+
+3. Bi-variate Analysis:	 Relationship b/w two variables, Association/dissociation b/w variables	
+	Continuous & Continuous	
+		Graphical visualisation
+		Correlation
+	Categorical & Categorical	
+		Two way table
+		Stacked column chart 
+		Bar chart
+		Chi-square Test
+	Categorical & Continuous	
+		Z-Test
+		T-Test
+		ANOVA
+
+4. Missing values treatment	
+	Deletion	
+		List wise deletion 
+		Pair wise deletion 
+	Imputation	
+		Mean/Meadian/Mode
+		Generalized imputation
+		Similar case Imputation
+	Prediction model	
+	K-nearest Imputation	
+
+5. Outlier treatment	
+	Outlier Cause 	
+		Data entry error
+		Measurement error
+		Experimental error
+		Intentional outlier 
+		Data processing error
+		Sampling error
+		Natural outlier 
+	Detect outlier 	
+		Box plot 
+		Histogram plot
+		Scatter plot
+	 	-1.5*IQR to +1.5*IQR
+		Out of 5th to 95th percentile
+	Outlier removal	Deleting observation
+		Transforming & binning values
+		Imputing
+		Treat seperately
+
+6. Variable transformation
+	Change the scale
+	Symmetric distribution
+	Apply standard transformation
+	Binning
+
+7. Variable creation
+	Derived variables
+	Dummy variable 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
