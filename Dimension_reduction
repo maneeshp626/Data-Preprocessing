@@ -53,7 +53,7 @@ Missing Value Ratio:
 	variables = data.columns
 	variable = variables[missing_ratio < threshold_Value]
 
-	# Impute techniques
+
 
 
 Low Variance Filter:
@@ -150,14 +150,78 @@ Forward Feature Selection :
     	We repeat this process until no significant improvement is seen in the model’s performance.
 
 
+Principle Component Analysis:
+	PCA is a technique which helps us in extracting a new set of variables from an existing large set of variables. These newly extracted variables are called Principal Components. A principal component is a normalized linear combination of the original predictors in a data set. Normalized predictors have mean equals to zero and standard deviation equals to one.
+
+	Steps to compute PCA:
+		1. Standardization :
+			Standardize the range of the continuous variables so that each one of them contributes equally to the analysis. PCA is quite sensitive regarding the variance of the initial variables. Variables with larger ranges will dominate over those with small ranges. 
+
+				Standardization(Z) = (value-mean)/std
+
+			When difference in the range of the variables it high we can use standardization. If model is sensitive to the magnitude of variance, standardization may be needed.
+
+		2. Covariance Matrix computation :
+			The covariance matrix is a p × p symmetric matrix (where p is the number of dimensions) that has as entries the covariances associated with all possible pairs of the initial variables. 
+
+			The entries of the covariance matrix are symmetric with respect to the main diagonal, which means that the upper and the lower triangular portions are equal. Since
+												Cov(a,a) = Var(a)
+												Cov(a,b) = Cov(b,a)
+
+			Positive Corr : The two variables increase or decrease together (correlated)
+      		Negative Corr : One increases when the other decreases (Inversely correlated)
+      		Zero Corr : No correlation
+
+      	3. Compute the eigenvectors and eigenvalues of the covariance matrix to identify the principal components :
+      		N-dimension data gives n PCAs. New variables are uncorrelated. 
+
+      		An important thing is that principal components are less interpretable and don’t have any real meaning since they are constructed as linear combinations of the initial variables.
+
+			Geometrically, principal components represent the directions of the data that explain a maximal amount of variance, means the lines that capture most information of the data. The relationship between variance and information here, is that, the larger the variance carried by a line, the larger the dispersion of the data points along it, and the larger the dispersion along a line, the more the information it has.
+
+			'How PCA constructs the Principal Components?'
+
+			Let’s go back to eigenvectors and eigenvalues. Their number is equal to the number of dimensions of the data. For example, for a 3-dimensional data set, there are 3 variables, therefore there are 3 eigenvectors with 3 corresponding eigenvalues.
+
+			Because the eigenvectors of the Covariance matrix are actually the directions of the axes where there is the most variance (most information) and that we call Principal Components. And eigenvalues are simply the coefficients attached to eigenvectors, which give the amount of variance carried in each Principal Component. 
+
+			By ranking your eigenvectors in order of their eigenvalues, highest to lowest, you get the principal components in order of significance.
+
+
+		4. Feature vector:
+			Select the features according to the significance of eigen value.	
+
+
+		5. Recast the data along the principal components axes :
+			In this step, use the feature vector formed using the eigenvectors of the covariance matrix, to reorient the data from the original axes to the ones represented by the principal components (hence the name Principal Components Analysis).
+
+			This can be done by multiplying the transpose of the original data set by the transpose of the feature vector.
+
+				Final_dataset = T(Feature_Vector) * T(Standardized_Original_dataset) 
+
+
+Standardization Use Case:
+	When difference in the range of the dataset it high we can use standardization. If model is sensitive to the magnitude of variance, standardization may be needed.
+
+	Before PCA:
+		In Principal Component Analysis, features with high variances/wide ranges, get more weight than those with low variance, and consequently, they end up illegitimately dominating the First Principal Components.
+		Standardization can prevent this, by giving same wheightage to all features.
+
+	Before Clustering:
+		Clustering models are distance based algorithms, in order to measure similarities between observations and form clusters they use a distance metric. So, features with high ranges will have a bigger influence on the clustering. Therefore, standardization is required before building a clustering model.
+
+	Before KNN:
+		k-nearest neighbors is a distance based classifier that classifies new observations based on similarity measures with labeled observations of the training set. Standardization makes all variables to contribute equally to the similarity measures.
+
+	Before SVM :
+		Support Vector Machine tries to maximize the distance between the separating plane and the support vectors. If one feature has very large values, it will dominate over other features when calculating the distance. So Standardization gives all features the same influence on the distance metric.
+
+	Before measuring variable importance in regression models :
+		You can measure variable importance in regression analysis, by fitting a regression model using the standardized independent variables and comparing the absolute value of their standardized coefficients. But, if the independent variables are not standardized, comparing their coefficients becomes meaningless.
 
 
 
-
-
-
-
-Use Case:
+Dimension Reduction Use Case:
 
 	Missing Value Ratio           : If the dataset has too many missing values, We can drop the variables having a large 
 	                                number of missing values in them.
@@ -183,5 +247,6 @@ Use Case:
 
 
 
-																					Reference:
-																					https://www.analyticsvidhya.com
+Reference:
+https://www.analyticsvidhya.com
+https://towardsdatascience.com

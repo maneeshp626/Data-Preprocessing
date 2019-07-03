@@ -70,12 +70,13 @@ Feature Removal or Dimension Reduction
 	Deletion	
 		List wise deletion 
 		Pair wise deletion 
+		Deleting Coloumn
 	Imputation	
 		Mean/Meadian/Mode
 		Generalized imputation
 		Similar case Imputation
-	Prediction model	
-	K-nearest Imputation	
+		Prediction model	
+		K-nearest Imputation	
 
 5. Outlier treatment	
 	Outlier Cause 	
