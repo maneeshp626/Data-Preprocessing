@@ -1,0 +1,80 @@
+ 
+
+ Reasons behind missing data:
+
+    Missing at Random (MAR): Missing at random means that the propensity for a data point to be missing is not related to the missing data, but it is related to some of the observed data. If a dropout variable is MAR, we may expect that the probability of a dropout of the variable in each case is conditionally independent of the variable, which is obtained currently and expected to be obtained in the future, given the history of the obtained variable prior to that case.
+
+    Missing Completely at Random (MCAR): The fact that a certain value is missing has nothing to do with its hypothetical value and with the values of other variables.
+    The statistical advantage of data that are MCAR is that the analysis remains unbiased. Power may be lost in the design, but the estimated parameters are not biased by the absence of the data.
+
+    Missing not at Random (MNAR): Two possible reasons are that the missing value depends on the hypothetical value (e.g. People with high salaries generally do not want to reveal their incomes in surveys) or missing value is dependent on some other variable’s value (e.g. Let’s assume that females generally don’t want to reveal their ages! Here the missing value in age variable is impacted by gender variable). 
+    The cases of MNAR data are problematic. The only way to obtain an unbiased estimate of the parameters in such a case is to model the missing data. The model may then be incorporated into a more complex one for estimating the missing values.
+
+    1. Listwise Deletion :
+		Listwise deletion removes all data for an observation that has one or more missing values.
+		If the assumption of MCAR is satisfied, a listwise deletion is known to produce unbiased estimates and conservative results. When the data do not fulfill the assumption of MCAR, listwise deletion may cause bias in the estimates of the parameters
+
+	2. Pairwise Deletion :
+		Pairwise deletion (available-case analysis) attempts to minimize the loss that occurs in listwise deletion. An easy way to think of how pairwise deletion works is to think of a correlation matrix. A correlation measures the strength of the relationship between two variables. For each pair of variables for which data is available, the correlation coefficient will take that data into account. Thus, pairwise deletion maximizes all data available by an analysis by analysis basis.
+
+
+	3. Mean, Median and Mode imputation :
+		Computing the overall mean, median or mode is a very basic imputation method. One disadvantage is that mean imputation reduces variance in the dataset.	
+
+		Generalized Imputation:
+			In this case, we calculate the mean or median for all non missing values of that variable then replace missing value with mean or median.
+
+		Similar Case Imputation:
+			In this case, we calculate average for similar case like gender "Male" (29.75) and "Female" (25) individually of non missing values then replace the missing value based on gender. 
+
+		from sklearn.preprocessing import Imputer
+		values = mydata.values
+		imputer = Imputer(missing_values=’NaN’, strategy=’mean’)
+		transformed_values = imputer.fit_transform(values)
+
+		# strategy can be changed to "median" and “most_frequent”
+
+
+	4. Linear Regression
+
+		To begin, several predictors of the variable with missing values are identified using a correlation matrix. The best predictors are selected and used as independent variables in a regression equation. The variable with missing data is used as the dependent variable. Cases with complete data for the predictor variables are used to generate the regression equation. 
+
+		It “theoretically” provides good estimates for missing values. However, there are several disadvantages:
+		First, because the replaced values were predicted from other variables they tend to fit together “too well” and so standard error is deflated. 
+		One must also assume that there is a linear relationship between the variables used in the regression equation when there may not be one.
+
+
+	5. Multiple imputation :
+
+    	1. Impute the missing values by using an appropriate model which incorporates random variation.
+    	2. Repeat the first step 3-5 times.
+    	3. Perform the desired analysis on each data set by using standard, complete data methods.
+    	4. Average the values of the parameter estimates across the missing value samples in order to obtain a single point estimate.
+    	5. Calculate the standard errors by averaging the squared standard errors of the missing value estimates. 
+    	After this, calculate the variance of the missing value parameter across the samples. 
+    	Finally, combine the two quantities in multiple imputation for missing data to calculate the standard errors.
+
+
+
+	6. KNN :
+		There are other machine learning techniques like XGBoost and Random Forest for data imputation. In KNN method of imputation, the missing values of an attribute are imputed using the given number of attributes that are most similar to the attribute whose values are missing. The similarity of two attributes is determined using a distance function. The method requires the selection of the number of nearest neighbors, and a distance metric. KNN can predict both discrete attributes (the most frequent value among the k nearest neighbors) and continuous attributes (the mean among the k nearest neighbors)
+		The distance metric varies according to the type of data:
+		1. Continuous Data: The commonly used distance metrics for continuous data are Euclidean, Manhattan and Cosine
+		2. Categorical Data: Hamming distance is generally used in this case. It takes all the categorical attributes and for each, count one if the value is not the same between two points. The Hamming distance is then equal to the number of attributes for which the value was different.
+
+		Drawback:
+			Time consuming. 
+			Accuracy may be degraded in high-dimension data.
+
+
+
+
+
+
+
+
+Reference:
+	https://www.statisticssolutions.com
+    https://towardsdatascience.com/
+    https://www.ncbi.nlm.nih.gov
+    https://www.analyticsvidhya.com
